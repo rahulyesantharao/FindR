@@ -1,0 +1,47 @@
+body {
+	// padding-top: 10px;
+}
+#tb {
+	margin: 10px auto;
+}
+#deleteButton, #saveButton {
+	display: block;
+	margin: 10px auto;
+}
+.flexerino {
+    display:flex;
+    flex-flow:row wrap;
+    padding:0 50px;
+    align-items: center;
+}
+.mdl-textfield {
+    flex:1;
+}
+
+thead {
+	background-color: rgb(0,176,255);
+}
+
+#optionWrapper {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 0 20px;
+}
+
+#options {
+    // transition:0.2s all ease;
+    // padding-left:20px;
+    flex:2;
+}
+
+#reg_modifiers {
+    flex:1;
+}
+
+#status {
+    margin: 20px 0;
+}
+.error {
+    background-color: #ff6666;
+    border: 4px #ff6666 solid; 
+}

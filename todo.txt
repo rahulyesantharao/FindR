@@ -1,0 +1,41 @@
+https://www.getmdl.io/showcase/index.html
+
+
+
+
+Functionality:
+ - Normal find/replace: only does visible textNodes in body
+ - Replace All: Does all textnodes (including tab title) and placeholder text
+
+
+
+
+
+
+
+
+
+
+
+
+ Bugs
+  - Scroll always goes below target position when norton toolbar is enabled
+  - doesn't work for placeholder text (in input fields)
+  - Edits <noscript> as plain text
+     - TRY: use regular expressions to exclude anything within <> and search on the html content
+  - wreaks havoc with <code> and <pre> elements
+
+ To Add
+    - CLEAN UP CODE
+  DONE?
+    - Whole Words (fix)
+    - SEARCHING FOR REGEX CHARACTERS DOESN'T WORK!!!
+    - RegEx :: MAJOR PROBLEMS WITH LENGTH 0 STRINGS
+    - Input Only
+    - match counter
+    - unhighlight on popup close
+    - disable the regex modifiers on popup open
+ Edge Cases
+  - No Matches
+  - Clean up input (check for empty strings)
+  - refresh matches ? (after replacing)

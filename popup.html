@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+    <head>
+        <title>FindR: Find and Replace for Google Chrome</title>
+        <!-- Scripts -->
+        <script src="jquery-2.2.2.min.js"></script>
+        <script src="popup.js"></script>
+
+        <!-- Material Design -->
+        <link rel="stylesheet" href="./mdl/material.min.css">
+        <script src="./mdl/material.min.js"></script>
+        <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
+        <link rel="stylesheet" href="./icon.css">
+
+        <!-- Custom Styles -->
+        <link rel="stylesheet" type="text/css" href="popup.css" />        
+    </head>
+    <body>
+        <h1> 
+            <img src="headerimg.png">
+            <button id="settingsButton" class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">settings</i></button>
+        </h1>
+        
+        <!-- Input Bar and Buttons -->
+        <div class="flexerino">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="find" autofocus />
+                <label class="mdl-textfield__label" for="find">Find</label>
+            </div>
+            <label id="status">  </label>
+            <button id="findNext" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-button--colored mdl-button--disabled" disabled="true">
+                <i class="material-icons">keyboard_arrow_down</i>
+            </button>
+            <button id="findPrev" class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect mdl-button--colored mdl-button--disabled" disabled="true">
+                <i class="material-icons">keyboard_arrow_up</i>
+            </button>
+        </div>
+        
+        <!-- Replace Bar and Buttons -->
+        <!-- arrow_downward -->
+        <!-- arrow_upward -->
+        <div class="flexerino">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="replace" />
+                <label class="mdl-textfield__label" for="replace">Replace</label>
+            </div>
+            <button id="replaceNext" class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect mdl-button--colored mdl-button--disabled" disabled="true">
+                <i class="material-icons">keyboard_arrow_down</i>
+            </button>
+            <button id="replacePrev" class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect mdl-button--colored mdl-button--disabled" disabled="true">
+                <i class="material-icons">keyboard_arrow_up</i>
+            </button>
+        </div>
+        
+        <!-- Replace All Button -->
+        <button id="replaceButton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-button--disabled" disabled="true">Replace All</button>
+
+        <!-- Extra Options -->
+        <div id="optionWrapper">
+            <div id="options">
+                <p> Options </p>
+                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="matchCase">
+                    <input type="checkbox" id="matchCase" class="mdl-checkbox__input" />
+                    <span class="mdl-checkbox__label">Match Case</span>
+                </label>
+                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="wholeWords">
+                    <input type="checkbox" id="wholeWords" class="mdl-checkbox__input" />
+                    <span class="mdl-checkbox__label">Whole Words Only</span>
+                </label>
+                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="regex">
+                    <input type="checkbox" id="regex" class="mdl-checkbox__input" />
+                    <span class="mdl-checkbox__label">Use RegEx</span>
+                </label>
+                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="inputFields">
+                    <input type="checkbox" id="inputFields" class="mdl-checkbox__input" />
+                    <span class="mdl-checkbox__label">Input Fields</span>
+                </label>
+            </div>
+            <div id="reg_modifiers">
+                <p> Modifiers </p>
+                <label class="mdl-icon-toggle mdl-js-icon-toggle mdl-js-ripple-effect" for="global-toggle">
+                    <input type="checkbox" id="global-toggle" class="mdl-icon-toggle__input" disabled>
+                    <i class="mdl-icon-toggle__label">g</i>
+                </label>
+                <br/>
+                <label class="mdl-icon-toggle mdl-js-icon-toggle mdl-js-ripple-effect" for="case-toggle">
+                    <input type="checkbox" id="case-toggle" class="mdl-icon-toggle__input" disabled>
+                    <i class="mdl-icon-toggle__label">i</i>
+                </label>
+                <br/>
+                <label class="mdl-icon-toggle mdl-js-icon-toggle mdl-js-ripple-effect" for="multiline-toggle">
+                    <input type="checkbox" id="multiline-toggle" class="mdl-icon-toggle__input" disabled>
+                    <i class="mdl-icon-toggle__label">m</i>
+                </label>
+            </div>
+        </div>
+    </body>
+</html>

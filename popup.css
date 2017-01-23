@@ -1,0 +1,91 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500|Hind:700);
+html {
+    width:100%;
+    height:auto;
+    max-height:100%;
+}
+body {
+    width:300px;
+    min-width:100%;
+    font-family:Roboto, sans-serif;
+    font-weight:400;
+    font-size: 16px;
+}
+
+.flexerino {
+    display:flex;
+    flex-flow:row wrap;
+    padding:0 20px;
+    align-items: center;
+}
+.mdl-textfield {
+    flex:1;
+}
+.mdl-textfield__label:after {
+    // bottom:24px;
+}
+.mdl-button{
+    display:inline-block;
+    margin:20px 0;
+}
+.mdl-button--raised {
+    display:block;
+    width:75%;
+    margin:0 auto;
+    margin-bottom:10px;
+    color:white;
+}
+.mdl-button--raised.mdl-button--colored {
+    color:white;
+}
+
+h1 {
+    box-sizing: border-box;
+    padding: 5px 0;
+    width: 100%;
+    font-size: 20px;
+    font-weight:400;
+    text-align: center;
+    margin:0;
+    margin-bottom:10px;
+    background: rgb(0,176,255);
+    color: white;
+    border-radius: 3px 3px 0 0;
+    box-shadow: 0 2px 5px 1px rgba(0,0,0,0.2);
+}
+
+#settingsButton {
+    position: absolute;
+    right: 10px;
+    top: -10px;
+}
+
+#status {
+    margin: 20px 0;
+}
+
+#optionWrapper {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 0 20px;
+}
+
+#options {
+    // transition:0.2s all ease;
+    // padding-left:20px;
+    flex:2;
+}
+
+#reg_modifiers {
+    flex:1;
+}
+p {
+    margin:0;
+    margin-left: -5px;
+    font-size: 16px;
+}
+
+.error {
+    background-color: #ff6666;
+    border: 4px #ff6666 solid; 
+}

@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+    <head>
+        <title>FindR Options</title>
+        <!-- Scripts -->
+        <script src="jquery-2.2.2.min.js"></script>
+        <script type="text/javascript" src="options.js"></script>        
+
+        <!-- Material Design -->
+        <link rel="stylesheet" href="./mdl/material.min.css">
+        <script src="./mdl/material.min.js"></script>
+        <link rel="stylesheet" href="./icon.css">
+
+        <!-- Custom Styles -->
+        <link rel="stylesheet" type="text/css" href="options.css" />        
+    </head>
+    <body>
+        <p style="padding: 10px; padding-bottom: 0px;">
+        Enter words that you would like to be automatically replaced on every new tab you open.
+        </p>
+        <table id="tb" class="mdl-data-table mdl-shadow--2dp">
+            <thead>
+                <tr>
+                    <th>
+                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select" for="table-header">
+                            <input type="checkbox" id="table-header" class="mdl-checkbox__input">
+                        </label>
+                    </th>
+                    <th class="mdl-data-table__cell--non-numeric"> Find </th>
+                    <th> Replace </th>
+                    <th> MC </th>
+                    <th> WW </th>
+                    <th> RX </th>
+                    <th> Mod </th>
+                </tr>
+            </thead>
+            <tbody id="data">
+            </tbody>
+        </table>
+
+        <button id="deleteButton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Delete</button>
+
+        <div class="flexerino">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="findT" autofocus />
+                <label class="mdl-textfield__label" for="findT">Find</label>
+            </div>
+            <label id="status">  </label>
+        </div>
+        <div class="flexerino">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="replaceT"/>
+                <label class="mdl-textfield__label" for="replaceT">Replace</label>
+            </div>
+        </div>
+
+        <!-- Extra Options -->
+        <div id="optionWrapper">
+            <div id="options">
+                <p> Options </p>
+                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="matchCase">
+                    <input type="checkbox" id="matchCase" class="mdl-checkbox__input" />
+                    <span class="mdl-checkbox__label">Match Case</span>
+                </label>
+                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="wholeWords">
+                    <input type="checkbox" id="wholeWords" class="mdl-checkbox__input" />
+                    <span class="mdl-checkbox__label">Whole Words Only</span>
+                </label>
+                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="regex">
+                    <input type="checkbox" id="regex" class="mdl-checkbox__input" />
+                    <span class="mdl-checkbox__label">Use RegEx</span>
+                </label>
+            </div>
+            <div id="reg_modifiers">
+                <p> Modifiers </p>
+                <label class="mdl-icon-toggle mdl-js-icon-toggle mdl-js-ripple-effect" for="global-toggle">
+                    <input type="checkbox" id="global-toggle" class="mdl-icon-toggle__input" disabled>
+                    <i class="mdl-icon-toggle__label">g</i>
+                </label>
+                <br/>
+                <label class="mdl-icon-toggle mdl-js-icon-toggle mdl-js-ripple-effect" for="case-toggle">
+                    <input type="checkbox" id="case-toggle" class="mdl-icon-toggle__input" disabled>
+                    <i class="mdl-icon-toggle__label">i</i>
+                </label>
+                <br/>
+                <label class="mdl-icon-toggle mdl-js-icon-toggle mdl-js-ripple-effect" for="multiline-toggle">
+                    <input type="checkbox" id="multiline-toggle" class="mdl-icon-toggle__input" disabled>
+                    <i class="mdl-icon-toggle__label">m</i>
+                </label>
+            </div>
+        </div>
+
+        <button id="saveButton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-button--disabled" disabled="true">Save</button>
+    </body>
+</html>
