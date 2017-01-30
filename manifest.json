@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "FindR",
-    "version": "1.1.1",
+    "version": "1.1.2",
 
     "description": "A find and replace bar for Google Chrome",
 
@@ -41,6 +41,13 @@
                 "chromeos": "Ctrl+Shift+F",
                 "linux": "Ctrl+Shift+F"
             }
+        },
+        "replace-all": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+A",
+                "mac": "Command+Shift+A"
+            },
+            "description": "Replace All, equivalent to pressing the Replace All button"
         }
     },
 

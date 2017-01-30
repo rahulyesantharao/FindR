@@ -108,3 +108,11 @@ chrome.runtime.onConnect.addListener(function(port) {
 		});
 	}
 });
+
+// ----------------------------- Commands API ------------------------------
+chrome.commands.onCommand.addListener(function(command) {
+	console.log('Command:', command);
+	if(command=='replace-all') {
+		chrome.runtime.sendMessage({type: "replaceAll"});
+	}
+});

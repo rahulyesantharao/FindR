@@ -2,8 +2,8 @@
 // Connect to background page to listen for unload
 chrome.runtime.connect({name:"listenForUnload"});
 
+//---------------------- Listen for Background Messages --------------------
 // set number of matches and current position
-// chrome.storage.onChanged.addListener(function(changes) {
 chrome.runtime.onMessage.addListener(function(message) {
     // console.log("Values Changed");
     // if(changes.numMatches || changes.curPos) {
@@ -20,6 +20,9 @@ chrome.runtime.onMessage.addListener(function(message) {
                 }
             }
         });
+    }
+    else if(message.type=="replaceAll") {
+        replaceAll(curReplaceText);
     }
 });
 
