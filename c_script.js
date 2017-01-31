@@ -14,7 +14,7 @@ var curPos; // current position of focus; modified by all functions
 function setValues() {
     if(numMatches==0) curPos=0;
 
-    console.log(curPos.toString() + " of " + numMatches.toString());
+    // console.log(curPos.toString() + " of " + numMatches.toString());
 
     chrome.storage.local.set({
         'numMatches':numMatches,
@@ -65,7 +65,7 @@ function countMatches() {
 // ------------------ Helper Functions -----------------------------
 // testUHL(): unhighlights all matches
 function testUHL() {
-    console.log("testUHL called");
+    // console.log("testUHL called");
     $("span.foundLELELEL").each(function() {
         var pNode = this.parentNode;
         pNode.replaceChild(this.firstChild, this);
@@ -77,7 +77,7 @@ function testUHL() {
 // fAll(): finds all matches and focuses on the first one
 function fAll(reg, mod) {
     var toFind = new RegExp(reg, mod);
-    console.log("fAll(" + reg + ", " + mod + ") called: " + toFind.toString())
+    // console.log("fAll(" + reg + ", " + mod + ") called: " + toFind.toString())
     
     numMatches=0;
 
@@ -92,7 +92,7 @@ function fAll(reg, mod) {
 // rAll(): unhighlights all previous matches and replaces everything (including tab title)
 function rAll(reg, mod, rep) {
     var toFind = new RegExp(reg, mod);
-    console.log("rAll() called: " + toFind.toString() + " -> " + rep);
+    // console.log("rAll() called: " + toFind.toString() + " -> " + rep);
     
     testUHL(); // unhighlights previous matches
     $("*").not("style").not("script").replaceText(toFind, rep); // replaces everything
@@ -112,19 +112,19 @@ function rAll(reg, mod, rep) {
 // rInput(): unhighlights all previous matches and replaces everything inside an input field
 function rInput(reg, mod, rep) {
     var toFind = new RegExp(reg, mod);
-    console.log("rInput() called: " + toFind.toString() + " -> " + rep);
+    // console.log("rInput() called: " + toFind.toString() + " -> " + rep);
 
     testUHL(); // unhighlight previous matches (just in case)
     
     $("input, textarea, select").each(function() {
         if($(this).val()=="") {
-            console.log("  - Placeholder");
+            // console.log("  - Placeholder");
             var new_val = $(this).attr("placeholder");
             if(typeof new_val === 'string') new_val = new_val.replace(toFind, rep);
             $(this).attr("placeholder", new_val);
         }
         else {
-            console.log("  - Value");
+            // console.log("  - Value");
             var old_val = $(this).val();
             var new_val;
             if(typeof old_val === 'string') new_val = old_val.replace(toFind, rep);
@@ -143,7 +143,7 @@ function rInput(reg, mod, rep) {
 // focusFirst(): focuses on first match
 function focusFirst() {
     curPos=0;
-    console.log("focusFirst called");
+    // console.log("focusFirst called");
     $("span.foundLELELEL").each(function() {
         if(isElementVisible($(this))) {
             curPos++;
@@ -158,7 +158,7 @@ function focusFirst() {
 // focusLast(): focuses on last match
 function focusLast() {
     curPos=numMatches+1;
-    console.log("focusLast called");
+    // console.log("focusLast called");
     $($("span.foundLELELEL").get().reverse()).each(function() {
         if(isElementVisible($(this))) {
             curPos--;
@@ -173,7 +173,7 @@ function focusLast() {
 
 // focusNext(): focuses on next match
 function focusNext() {
-    console.log("focusNext called");
+    // console.log("focusNext called");
     var next=false;
     $("span.foundLELELEL").each(function() {
         if(next && isElementVisible($(this))) {
@@ -195,7 +195,7 @@ function focusNext() {
 
 // focusPrev(): focuses on previous match
 function focusPrev() {
-    console.log("focusPrev called");
+    // console.log("focusPrev called");
     var next=false;
     $($("span.foundLELELEL").get().reverse()).each(function() {
         if(next && isElementVisible($(this))) {
@@ -217,7 +217,7 @@ function focusPrev() {
 
 // replacePrev(): replaces current match and focuses on previous
 function replacePrev(rstr) {
-    console.log("replacePrev called");
+    // console.log("replacePrev called");
     var next=false;
     var node;
     $($("span.foundLELELEL").get().reverse()).each(function() {
@@ -247,7 +247,7 @@ function replacePrev(rstr) {
 
 // replaceNext(): replaces current match and focuses on next
 function replaceNext(rstr) {
-    console.log("replaceNext called");
+    // console.log("replaceNext called");
     var next=false;
     var node;
     $("span.foundLELELEL").each(function() {

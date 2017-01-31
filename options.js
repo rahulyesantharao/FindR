@@ -1,18 +1,18 @@
 // ------------------ RegEx Formatting -----------------------------
 function empty(string, mod) {
-    console.log("empty(" + string + ", " + mod + ")");
+    // console.log("empty(" + string + ", " + mod + ")");
     var test = "This is a test string that will catch any empty regex.";
     var regx = new RegExp(string, mod);
     var matches = test.match(regx);
     if(matches) {
         for(var i=0; i<matches.length; i++) {
             if(matches[i]=="") {
-                console.log("  - Empty 2");
+                // console.log("  - Empty 2");
                 return true;
             }
         }
     }
-    console.log("  - Not Empty");
+    // console.log("  - Not Empty");
     return false;
 }
 
@@ -36,15 +36,15 @@ $(document).ready(function() {
             findWords = data.permanentF;
             replaceWords = data.permanentR;
             modifiers = data.permanentM;
-            console.log("data retrieved");
-            console.log(findWords);
-            console.log(replaceWords);
-            console.log(modifiers);
+            // console.log("data retrieved");
+            // console.log(findWords);
+            // console.log(replaceWords);
+            // console.log(modifiers);
             
             // load pairs into table
-		    console.log(findWords.length);
+		    // console.log(findWords.length);
 		    for(var i=0, length=findWords.length; i<length; i++) {
-		    	console.log("NEXT LOAD");
+		    	// console.log("NEXT LOAD");
                 var tblMC = (modifiers[i][0]?'<i class="material-icons">check</i>':'');
                 var tblWW = (modifiers[i][1]?'<i class="material-icons">check</i>':'');
                 var tblRX = (modifiers[i][2]?'<i class="material-icons">check</i>':'');
@@ -91,19 +91,19 @@ $(document).ready(function() {
     //----------- OPTIONS -------------------------
     // Match Case
     $("#matchCase").click(function() {
-        console.log("Option: Match Case");
+        // console.log("Option: Match Case");
         mC = !mC;
     });
 
     // Whole Words
     $("#wholeWords").click(function() {
-        console.log("Option: Whole Words");
+        // console.log("Option: Whole Words");
         wW = !wW;
     });
 
     // Use RegEx
     $("#regex").click(function() {
-        console.log("Option: use RegEx");
+        // console.log("Option: use RegEx");
         rX = !rX;
         if(rX) { // disables match case, whole words; enables modifiers
             document.querySelector("#matchCase").parentElement.MaterialCheckbox.disable();
@@ -139,7 +139,7 @@ $(document).ready(function() {
     //----------- BUTTONS -------------------------
     // save new pair
     $("#saveButton").click(function() {
-    	console.log("saveClicked");
+    	// console.log("saveClicked");
     	var curF = $("#findT").val();
     	var curR = $("#replaceT").val();
         var curM="";
@@ -151,14 +151,14 @@ $(document).ready(function() {
             try {
                 new RegExp(curF);
             } catch(e) {
-                console.log("Invalid Regular Expression");
+                // console.log("Invalid Regular Expression");
                 $("#status").text("Error");
                 $("#status").addClass("error");
                 return;
             }
 
             if(empty(curF, curM)) {
-                console.log("Empty Regular Expression");
+                // console.log("Empty Regular Expression");
                 $("#status").text("Infinite");
                 $("#status").addClass("error");
                 return;
@@ -168,7 +168,7 @@ $(document).ready(function() {
             curM = "g";
             if(!mC) curM += "i";
         	if(findWords.indexOf(curF)>=0) {
-        		console.log("Repeat Error");
+        		// console.log("Repeat Error");
                 $("#status").text("Repeat");
                 $("#status").addClass("error");
                 return;
@@ -179,8 +179,8 @@ $(document).ready(function() {
 		replaceWords.push(curR);
         modifiers.push([mC, wW, rX, curM]);
 		
-        console.log("SAVING");
-		console.log(curF);
+        // console.log("SAVING");
+		// console.log(curF);
 
         var i = modifiers.length-1;
         var tblMC = (modifiers[i][0]?'<i class="material-icons">check</i>':'');
@@ -206,7 +206,7 @@ $(document).ready(function() {
     $("#deleteButton").click(function() {
     	for(var i=boxes.length-1; i>=0; i--) {
     		if($(boxes[i]).hasClass('is-checked')) {
-    			console.log("CHECKED");
+    			// console.log("CHECKED");
     			$("#data").children().eq(i).remove();
     			findWords.splice(i,1);
     			replaceWords.splice(i,1);

@@ -12,7 +12,7 @@ chrome.runtime.onMessage.addListener(function(message) {
             if((typeof data.numMatches == "undefined")||(typeof data.curPos == "undefined")) { // error
             }
             else {
-                console.log(data.curPos.toString() + " of " + data.numMatches.toString());
+                // console.log(data.curPos.toString() + " of " + data.numMatches.toString());
                 if(curWord!="") {
                     if(data.curPos==0) $("#status").addClass("error");
                     else $("#status").removeClass();
@@ -63,19 +63,19 @@ function escapeRegExp(string){
 }
 
 function empty(string, mod) {
-	console.log("empty(" + string + ", " + mod + ")");
+	// console.log("empty(" + string + ", " + mod + ")");
 	var test = "This is a test string that will catch any empty regex.";
 	var regx = new RegExp(string, mod);
 	var matches = test.match(regx);
 	if(matches) {
 		for(var i=0; i<matches.length; i++) {
 			if(matches[i]=="") {
-				console.log("  - Empty 2");
+				// console.log("  - Empty 2");
 				return true;
 			}
 		}
 	}
-	console.log("  - Not Empty");
+	// console.log("  - Not Empty");
 	return false;
 }
 
@@ -104,7 +104,7 @@ function findAll() {
     	try {
     		new RegExp(curWord);
     	} catch(e) {
-    		console.log("Invalid Regular Expression");
+    		// console.log("Invalid Regular Expression");
             UHLAll();
     		$("#status").text("Error");
             $("#status").addClass("error");
@@ -112,7 +112,7 @@ function findAll() {
     	}
 
     	if(empty(curWord, mod)) {
-    		console.log("Empty Regular Expression");
+    		// console.log("Empty Regular Expression");
             UHLAll();
     		$("#status").text("Infinite");
             $("#status").addClass("error");
@@ -130,14 +130,14 @@ function findAll() {
         }
         if(!mC) mod+="i";
     }
-    console.log("findAll("+reg+", "+mod+")");
+    // console.log("findAll("+reg+", "+mod+")");
     // ----- find and focus -----
     chrome.tabs.executeScript({code: 'fAll("'+ reg+ '", "' + mod + '");'});
 }
 
 // replaceAll: unhighlights all the matches and replaces all of them (including tab title)
 function replaceAll(str) {
-    console.log("replaceAll called");
+    // console.log("replaceAll called");
     // ----- build search regex -----
     // $("#status").text(""); $("#status").removeClass();
     var reg;
@@ -153,14 +153,14 @@ function replaceAll(str) {
     	try {
     		new RegExp(curWord);
     	} catch(e) {
-    		console.log("Invalid Regular Expression");
+    		// console.log("Invalid Regular Expression");
     		$("#status").text("Error");
             $("#status").addClass("error");
     		return;
     	}
 
     	if(empty(curWord, mod)) {
-    		console.log("Empty Regular Expression");
+    		// console.log("Empty Regular Expression");
     		$("#status").text("Infinite");
             $("#status").addClass("error");
     		return;
@@ -212,7 +212,7 @@ $(document).ready(function () {
         $("#find").select();
         // curWord = data.curWord;
         // $("#find").keyup();
-        console.log("GOT CURWORD: " + data.curWord);
+        // console.log("GOT CURWORD: " + data.curWord);
     });
     curReplaceText="";
     // $("#find").focus();
@@ -236,16 +236,16 @@ $(document).ready(function () {
     	else {
 	        if(ev.which === 13) {
 	            if(ev.shiftKey) {
-	                console.log("Shift+Enter = findPrev");
+	                // console.log("Shift+Enter = findPrev");
 	                findPrev();
 	            }
 	            else {
-	                console.log("Enter = findNext");
+	                // console.log("Enter = findNext");
 	                findNext();   
 	            }
 	        }
 	        else {
-	            console.log("find value changed");
+	            // console.log("find value changed");
 	            if(curWord != $("#find").val()) { // if this value is different, reset
 	                curWord = $("#find").val()
 	                if(curWord=="") { // if its empty, unhighlight matches and disable all buttons
@@ -302,16 +302,16 @@ $(document).ready(function () {
     	else {
 	        if(ev.which === 13) {
 	            if(ev.shiftKey) {
-	                console.log("Shift+Enter = replacePrev");
+	                // console.log("Shift+Enter = replacePrev");
 	                replacePrev(curReplaceText);
 	            }
 	            else {
-	                console.log("Enter = replaceNext");
+	                // console.log("Enter = replaceNext");
 	                replaceNext(curReplaceText);   
 	            }
 	        }
 	        else {
-	            console.log("replace value changed");
+	            // console.log("replace value changed");
 	            curReplaceText = $("#replace").val();
 	            // if(!iF && curReplaceText=="") { // replace text empty
 	            //     // disable all the replace buttons
@@ -337,57 +337,57 @@ $(document).ready(function () {
     //----------- BUTTONS -------------------------
     // Replace All
     $("#replaceButton").click(function() {
-        console.log("replaceButton clicked");
+        // console.log("replaceButton clicked");
         // if(curWord=="") UHLAll();
         /*else */replaceAll(curReplaceText);
     });
     
     // Find Next clicked
     $("#findNext").click(function() {
-        console.log("findNext Clicked");
+        // console.log("findNext Clicked");
         findNext();
     });
     
     // Find Previous clicked
     $("#findPrev").click(function() {
-        console.log("findPrev Clicked");
+        // console.log("findPrev Clicked");
         findPrev();
     });
 
     // Replace Next clicked
     $("#replaceNext").click(function() {
-        console.log("replaceNext clicked");
+        // console.log("replaceNext clicked");
         replaceNext(curReplaceText);
     });
     
     // Replace Previous clicked
     $("#replacePrev").click(function() {
-        console.log("replacePrev clicked");
+        // console.log("replacePrev clicked");
         replacePrev(curReplaceText);
     });
 
     $("#settingsButton").click(function() {
-        console.log("settingsButton clicked");
+        // console.log("settingsButton clicked");
         chrome.runtime.openOptionsPage();
     })
     //----------- OPTIONS -------------------------
     // Match Case
     $("#matchCase").click(function() {
-        console.log("Option: Match Case");
+        // console.log("Option: Match Case");
         mC = !mC;
         if(!iF && curWord!="") findAll();
     });
 
     // Whole Words
     $("#wholeWords").click(function() {
-        console.log("Option: Whole Words");
+        // console.log("Option: Whole Words");
         wW = !wW;
         if(!iF && curWord!="") findAll();
     });
 
     // Use RegEx
     $("#regex").click(function() {
-        console.log("Option: use RegEx");
+        // console.log("Option: use RegEx");
         rX = !rX;
         if(rX) { // disables match case, whole words; enables modifiers
     		document.querySelector("#matchCase").parentElement.MaterialCheckbox.disable();
@@ -410,7 +410,7 @@ $(document).ready(function () {
 
     // Input Fields
     $("#inputFields").click(function() {
-    	console.log("Option: Input Fields")
+    	// console.log("Option: Input Fields")
     	iF = !iF;
     	if(iF) {
     		UHLAll();
@@ -442,19 +442,19 @@ $(document).ready(function () {
     //----------- MODIFIERS (REGEX ONLY) -------------------------
     // Use g
     $("#global-toggle").click(function() {
-    	console.log("Regex: use g");
+    	// console.log("Regex: use g");
     	if(!iF && curWord!="") findAll();
     });
 
     // Use i
     $("#case-toggle").click(function() {
-    	console.log("Regex: use i");
+    	// console.log("Regex: use i");
     	if(!iF && curWord!="") findAll();
     });
 
     // Use m
     $("#multiline-toggle").click(function() {
-    	console.log("Regex: use m");
+    	// console.log("Regex: use m");
     	if(!iF && curWord!="") findAll();
     });
 });

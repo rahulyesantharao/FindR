@@ -42,10 +42,10 @@ chrome.storage.local.get({"permanentF":[], "permanentR":[], "permanentM":[]}, fu
         findWords = data.permanentF;
         replaceWords = data.permanentR;
         modifiers = data.permanentM;
-        console.log("permanent data retrieved");
-        console.log(findWords);
-        console.log(replaceWords);
-        console.log(modifiers);
+        // console.log("permanent data retrieved");
+        // console.log(findWords);
+        // console.log(replaceWords);
+        // console.log(modifiers);
     }
 });
 
@@ -59,10 +59,10 @@ chrome.runtime.onMessage.addListener(function(message) {
 		        findWords = data.permanentF;
 		        replaceWords = data.permanentR;
 		        modifiers = data.permanentM;
-		        console.log("permanent data updated");
-		        console.log(findWords);
-		        console.log(replaceWords);
-		        console.log(modifiers);
+		        // console.log("permanent data updated");
+		        // console.log(findWords);
+		        // console.log(replaceWords);
+		        // console.log(modifiers);
 		    }
 		});
 	}
@@ -78,7 +78,7 @@ chrome.tabs.onCreated.addListener(function(tabId, changeInfo, tab) {
 			else reg = quotes(spaces(escapeLit(findWords[i])));
 		}
 		var str = replaceWords[i];
-		console.log("perm replacing:"+reg+", "+mod);
+		// console.log("perm replacing:"+reg+", "+mod);
 		chrome.tabs.executeScript(tabId, {code: 'rAll("' + reg + '", "' + mod + '", "' + str + '");'});
 	}
 });
@@ -92,7 +92,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 			else reg = quotes(spaces(escapeLit(findWords[i])));
 		}
 		var str = replaceWords[i];
-		console.log("perm replacing: "+reg+", "+mod+" in tab " + tabId + " because " + changeInfo.status + " at " + changeInfo.url);
+		// console.log("perm replacing: "+reg+", "+mod+" in tab " + tabId + " because " + changeInfo.status + " at " + changeInfo.url);
 		chrome.tabs.executeScript(tabId, {code: 'rAll("' + reg + '", "' + mod + '", "' + str + '");'});
 	}
 });
@@ -103,7 +103,7 @@ chrome.runtime.onConnect.addListener(function(port) {
 	if(port.name=="listenForUnload") {
 		// port.postMessage({})
 		port.onDisconnect.addListener(function(port) {
-			console.log("Disconnected");
+			// console.log("Disconnected");
 			chrome.tabs.executeScript({code: 'testUHL();'});
 		});
 	}
@@ -111,7 +111,7 @@ chrome.runtime.onConnect.addListener(function(port) {
 
 // ----------------------------- Commands API ------------------------------
 chrome.commands.onCommand.addListener(function(command) {
-	console.log('Command:', command);
+	// console.log('Command:', command);
 	if(command=='replace-all') {
 		chrome.runtime.sendMessage({type: "replaceAll"});
 	}
